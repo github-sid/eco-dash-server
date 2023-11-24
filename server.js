@@ -15,7 +15,7 @@ mongoose
   });
 
 app.use(require("./router/water"));
-//app.use(require("./router/cO2"));
+app.use(require("./router/ourPeople"));
 //app.use(require("./model/partTimeEmployee"));
 
 app.listen(2023, () => {

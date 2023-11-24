@@ -13,9 +13,17 @@ const wInputYearSchema = require("../model/waterInputYear");
 router.get("/water", async (req, res) => {
   try {
     const dType = await wDischargeTypeSchema.find();
+    //console.log("---------------------------");
+    //console.log(dType);
     const dYear = await wDischargeYearSchema.find();
+    //console.log("---------------------------");
+    //console.log(dYear);
     const iType = await wInputTypeSchema.find();
+    //console.log("---------------------------");
+    //console.log(iType);
     const iYear = await wInputYearSchema.find();
+    //console.log("---------------------------");
+    //console.log(iYear);
 
     const responseData = {
       dischargeType: dType,
@@ -25,7 +33,7 @@ router.get("/water", async (req, res) => {
     };
 
     console.log(responseData);
-    res.json(dType);
+    res.json(responseData);
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Internal Server Error" });
