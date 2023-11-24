@@ -1,4 +1,3 @@
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -15,12 +14,9 @@ mongoose
     console.log(err);
   });
 
-
-
-app.use(require("./router/cO2"));
-app.use(require("./model/partTimeEmployee"));
-
-
+app.use(require("./router/water"));
+//app.use(require("./router/cO2"));
+//app.use(require("./model/partTimeEmployee"));
 
 app.listen(2023, () => {
   console.log("Port 2023");
