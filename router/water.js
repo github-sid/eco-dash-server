@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-const wDischargeTypeSchema = require("../model/waterDischargeType");
+const wDischargeTypeSchema = require("../model/water/waterDischargeType");
 
-const wDischargeYearSchema = require("../model/waterDischargeYear");
+const wDischargeYearSchema = require("../model/water/waterDischargeYear");
 
-const wInputTypeSchema = require("../model/waterInputType");
+const wInputTypeSchema = require("../model/water/waterInputType");
 
-const wInputYearSchema = require("../model/waterInputYear");
+const wInputYearSchema = require("../model/water/waterInputYear");
 
-// router.get("/water", async (req, res) => {});
-router.get("/water", async (req, res) => {
+router.use((req, res, next) => {
+  console.log("Water router middleware");
+  next();
+});
+
+router.get("/", async (req, res) => {
   try {
     const dType = await wDischargeTypeSchema.find();
     //console.log("---------------------------");

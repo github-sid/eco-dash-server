@@ -1,44 +1,48 @@
 const express = require("express");
 const router = express.Router();
 
-const contractorSchema = require("../model/contractor");
-const empAgeSchema = require("../model/empAge");
-const newHireSchema = require("../model/newHire");
-const newHireGenderSchema = require("../model/newHireGender");
-const partTimeCountrySchema = require("../model/partTimeCountry");
-const permanentOrTempSchema = require("../model/permanentOrTemp");
-const rolesSchema = require("../model/roles");
+const contractorSchema = require("../model/ourPeople/contractor");
+const empAgeSchema = require("../model/ourPeople/empAge");
+const newHireSchema = require("../model/ourPeople/newHire");
+const newHireGenderSchema = require("../model/ourPeople/newHireGender");
+const partTimeCountrySchema = require("../model/ourPeople/partTimeCountry");
+const permanentOrTempSchema = require("../model/ourPeople/permanentOrTemp");
+const rolesSchema = require("../model/ourPeople/roles");
 
-// router.get("/water", async (req, res) => {});
-router.get("/ourPeople", async (req, res) => {
+router.use((req, res, next) => {
+  console.log("Our-people router middleware");
+  next();
+});
+
+router.get("/", async (req, res) => {
   try {
     const contractorData = await contractorSchema.find();
-    console.log("---------------------------");
-    console.log(contractorData);
+    //console.log("---------------------------");
+    //console.log(contractorData);
 
     const empData = await empAgeSchema.find();
-    console.log("---------------------------");
-    console.log(empData);
+    //console.log("---------------------------");
+    //console.log(empData);
 
     const newHireData = await newHireSchema.find();
-    console.log("---------------------------");
-    console.log(newHireData);
+    //console.log("---------------------------");
+    //console.log(newHireData);
 
     const newHireGenderData = await newHireGenderSchema.find();
-    console.log("---------------------------");
-    console.log(newHireGenderData);
+    //console.log("---------------------------");
+    //console.log(newHireGenderData);
 
     const partTimeCountryData = await partTimeCountrySchema.find();
-    console.log("---------------------------");
-    console.log(partTimeCountryData);
+    //console.log("---------------------------");
+    //console.log(partTimeCountryData);
 
     const permanentOrTempData = await permanentOrTempSchema.find();
-    console.log("---------------------------");
-    console.log(permanentOrTempData);
+    //console.log("---------------------------");
+    //console.log(permanentOrTempData);
 
     const roleData = await rolesSchema.find();
-    console.log("---------------------------");
-    console.log(roleData);
+    //console.log("---------------------------");
+    //console.log(roleData);
 
     const responseData = {
       contractorData: contractorData,
